@@ -27,9 +27,6 @@ const TasksTemplate = ({ times, ranges }: StateProps) => (
     </Grid>
 )
 
-const mapStateToProps = (state: State): StateProps => ({
-    times: state.times,
-    ranges: state.ranges,
-});
+const mapStateToProps = ({ times, ranges }: State): StateProps => ({ times, ranges });
 
 export default connect(mapStateToProps)(TasksTemplate);

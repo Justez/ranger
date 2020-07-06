@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import { Grid, Typography } from '@material-ui/core';
 
 import { State } from '../../store';
+import { Ranges } from '../../store/settings-module/types';
 import TimeInputForm from '../../components/time-input-form';
 import TimeRemoveForm from '../../components/time-remove-form';
 
-type StateProps = State
+type StateProps = {
+    ranges: Ranges
+}
 
 const RangesTemplate = ({ ranges }: StateProps) => (
     <Grid container justify='center'>
@@ -23,9 +26,6 @@ const RangesTemplate = ({ ranges }: StateProps) => (
     </Grid>
 );
 
-const mapStateToProps = (state: State): StateProps => ({
-    times: state.times,
-    ranges: state.ranges,
-});
+const mapStateToProps = ({ ranges }: State): StateProps => ({ ranges });
 
 export default connect(mapStateToProps)(RangesTemplate);

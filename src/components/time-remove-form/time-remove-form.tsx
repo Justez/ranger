@@ -2,14 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-
-import { State } from '../../store';
-import { Ranges } from '../../store/settings-module/types';
-import { actions } from '../../store/settings-module';
 import { Typography, Grid } from '@material-ui/core';
 import WarningIcon from '@material-ui/icons/Warning';
 import OKIcon from '@material-ui/icons/Done';
 
+import { State } from '../../store';
+import { Ranges } from '../../store/settings-module/types';
+import { actions } from '../../store/settings-module';
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
@@ -81,9 +80,7 @@ const TimeInputForm = ({ name, option, actions, ranges }: OwnProps) => {
     );
 }
 
-const mapStateToProps = ({ ranges }: State): StateProps => ({
-    ranges,
-});
+const mapStateToProps = ({ ranges }: State): StateProps => ({ ranges });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
     actions: {

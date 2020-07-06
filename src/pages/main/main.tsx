@@ -21,14 +21,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 export default function SimpleTabs() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
-
     const handleChange = (_: any, newValue: number) => setValue(newValue);
 
     return (
         <>
             <AppBar position="static" className={classes.root}>
                 <Tabs value={value} onChange={handleChange} indicatorColor='primary'>
-                    <Tab label="Tasks" />
+                    <Tab label="Times" />
                     <Tab label="Ranges" />
                 </Tabs>
             </AppBar>
