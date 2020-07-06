@@ -1,4 +1,4 @@
-# Simple react-redux 3hr challenge
+# Simple react-redux challenge
 
 <img width="1200" src="readme-assets/idle_state.png">
 
