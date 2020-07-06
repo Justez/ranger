@@ -1,12 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 import { useForm } from "react-hook-form";
 import { makeStyles, Theme } from '@material-ui/core/styles';
+
 import { SubmitData } from './'
+import { actions } from '../../store/time-module';
 
 const useStyles = makeStyles((theme: Theme) => ({
+    form: {
+        marginBottom: theme.spacing(5),
+    },
     input: {
         height: 40,
-        width: 200,
+        width: theme.spacing(30),
         padding: theme.spacing(1),
         marginRight: theme.spacing(2),
         borderRadius: theme.shape.borderRadius,
@@ -32,14 +39,22 @@ type Props = {
     patternMessage: string;
 }
 
-export default function TimeInputForm({ label, name, pattern, patternMessage }: Props) {
+interface DispatchProps {
+    actions: {
+        time: typeof actions;
+    };
+}
+
+const TimeInputForm = ({ label, name, pattern, patternMessage, actions }: Props & DispatchProps) => {
     const classes = useStyles();
     const { register, handleSubmit, errors } = useForm();
 
-    const onSubmit = (data: SubmitData) => console.log(data);
+    const onSubmit = (data: SubmitData) => {
+        actions.time['add' + name.charAt(0).toUpperCase() + name.slice(1)](data[name])
+    }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
             <input
                 className={classes.input}
                 name={name}
@@ -52,3 +67,11 @@ export default function TimeInputForm({ label, name, pattern, patternMessage }: 
         </form>
     );
 }
+
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
+    actions: {
+        time: bindActionCreators(actions, dispatch),
+    },
+});
+
+export default connect(undefined, mapDispatchToProps)(TimeInputForm);
