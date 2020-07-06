@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { AppBar, Tab, Tabs } from '@material-ui/core';
+import { AppBar, Box, Tab, Tabs } from '@material-ui/core';
 
 import TasksTemplate from '../../business-components/tasks-template';
 import RangesTemplate from '../../business-components/ranges-template';
@@ -27,15 +27,17 @@ export default function SimpleTabs() {
     };
 
     return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+        <>
+            <AppBar position="static" className={classes.root}>
+                <Tabs value={value} onChange={handleChange} indicatorColor='primary'>
                     <Tab label="Tasks" />
                     <Tab label="Ranges" />
                 </Tabs>
             </AppBar>
-            {value === 0 && <TasksTemplate />}
-            {value === 1 && <RangesTemplate />}
-        </div>
+            <Box mt={6} ml={2}>
+                {value === 0 && <TasksTemplate />}
+                {value === 1 && <RangesTemplate />}
+            </Box>
+        </>
     );
 }
