@@ -4,8 +4,8 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 
 import { State } from '../../store';
-import { Ranges } from '../../store/time-module/types';
-import { actions } from '../../store/time-module';
+import { Ranges } from '../../store/settings-module/types';
+import { actions } from '../../store/settings-module';
 import { Typography, Grid } from '@material-ui/core';
 import WarningIcon from '@material-ui/icons/Warning';
 import OKIcon from '@material-ui/icons/Done';
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 interface DispatchProps {
     actions: {
-        time: typeof actions;
+        settings: typeof actions;
     };
 }
 
@@ -63,7 +63,7 @@ const TimeInputForm = ({ name, option, actions, ranges }: OwnProps) => {
         return from === option
     }) : false;
 
-    const handleSubmit = () => actions.time['remove' + name.charAt(0).toUpperCase() + name.slice(1)](option)
+    const handleSubmit = () => actions.settings['remove' + name.charAt(0).toUpperCase() + name.slice(1)](option)
 
     return (
         <form onSubmit={handleSubmit}>
@@ -87,7 +87,7 @@ const mapStateToProps = ({ ranges }: State): StateProps => ({
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
     actions: {
-        time: bindActionCreators(actions, dispatch),
+        settings: bindActionCreators(actions, dispatch),
     },
 });
 

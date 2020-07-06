@@ -22,9 +22,7 @@ export default function SimpleTabs() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
-    const handleChange = (_: any, newValue: number) => {
-        setValue(newValue);
-    };
+    const handleChange = (_: any, newValue: number) => setValue(newValue);
 
     return (
         <>

@@ -9,7 +9,7 @@ import TimeRemoveForm from '../../components/time-remove-form';
 type StateProps = State
 
 const TasksTemplate = ({ times, ranges }: StateProps) => (
-    <Grid container justify='center' spacing={5}>
+    <Grid container justify='center'>
         <Grid item xs={5}>
             <Typography paragraph variant="h5">Time Range Verifier</Typography>
             <TimeInputForm

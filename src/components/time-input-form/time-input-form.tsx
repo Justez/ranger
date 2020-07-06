@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { makeStyles, Theme } from '@material-ui/core/styles';
 
 import { SubmitData } from './'
-import { actions } from '../../store/time-module';
+import { actions } from '../../store/settings-module';
 
 const useStyles = makeStyles((theme: Theme) => ({
     form: {
@@ -41,7 +41,7 @@ type Props = {
 
 interface DispatchProps {
     actions: {
-        time: typeof actions;
+        settings: typeof actions;
     };
 }
 
@@ -50,7 +50,7 @@ const TimeInputForm = ({ label, name, pattern, patternMessage, actions }: Props 
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = (data: SubmitData) => {
-        actions.time['add' + name.charAt(0).toUpperCase() + name.slice(1)](data[name])
+        actions.settings['add' + name.charAt(0).toUpperCase() + name.slice(1)](data[name])
     }
 
     return (
@@ -70,7 +70,7 @@ const TimeInputForm = ({ label, name, pattern, patternMessage, actions }: Props 
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
     actions: {
-        time: bindActionCreators(actions, dispatch),
+        settings: bindActionCreators(actions, dispatch),
     },
 });
 

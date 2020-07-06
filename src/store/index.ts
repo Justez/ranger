@@ -1,11 +1,11 @@
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
-import timeReducer from './time-module/reducer'
+import settingsReducer from './settings-module/reducer'
 
 const configureStore = () => {
   const instance = createStore(
-    timeReducer,
+    settingsReducer,
     composeWithDevTools(),
   );
 
